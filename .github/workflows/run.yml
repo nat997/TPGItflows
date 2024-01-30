@@ -1,4 +1,4 @@
-name: FastAPI run 
+name: FastAPI run
 
 on:
   push:
@@ -8,7 +8,11 @@ on:
 
 jobs:
   fastapi-run:
-    runs-on: macos-latest-xlarge
+    runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, 3.10]  # Use Python versions compatible with Apple M1
 
     steps:
       - name: Checkout
@@ -17,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.7'
+          python-version: ${{ matrix.python-version }}  # Use the specified Python version
 
       - name: Install Backend Dependencies
         run: |

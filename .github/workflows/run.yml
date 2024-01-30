@@ -8,7 +8,7 @@ on:
 
 jobs:
   fastapi-run:
-    runs-on: ubuntu-20.04
+    runs-on: macos-latest-xlarge
 
     steps:
       - name: Checkout
